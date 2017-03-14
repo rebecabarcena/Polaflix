@@ -1,18 +1,33 @@
 package p1;
-/**
- * @(#) Estandar.java
- */
 
+import java.util.List;
+
+/**
+ * Implementa una serie de tipo estándar
+ */
 public class Estandar extends Serie
 {
 	private double precioCapitulo = 0.5;
 
+	/**
+	 * Constructor sin parámetros
+	 */
 	public Estandar() {
 		super();
 	}
 
+	/**
+	 * Constructor con parámetros
+	 * @param temporadas
+	 * @param precioCapitulo
+	 * @param nombre
+	 * @param anhoComienzo
+	 * @param descripcion
+	 * @param creador
+	 * @param actoresPrincipales
+	 */
 	public Estandar(Temporada temporadas, double precioCapitulo, String nombre, Integer anhoComienzo,
-			String descripcion, Creador creador, Actor actoresPrincipales) {
+			String descripcion, List<Creador> creador, List<Actor> actoresPrincipales) {
 		super(temporadas, precioCapitulo, nombre, anhoComienzo, descripcion, creador, actoresPrincipales);
 	}
 
@@ -21,6 +36,7 @@ public class Estandar extends Serie
 		this.precioCapitulo = precioCapitulo;
 	}
 
+	// getters y setters
 	public double getPrecioCapitulo() {
 		return precioCapitulo;
 	}

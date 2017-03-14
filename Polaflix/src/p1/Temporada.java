@@ -1,32 +1,48 @@
 package p1;
-/**
- * @(#) Temporada.java
- */
 
-public class Temporada
+import java.util.List;
+
+/**
+ * Clase que implementa la temporada de una serie
+ */
+public class Temporada implements Comparable<Temporada>
 {
-	private Capitulo capitulos;
+	// capítulos de la temporada
+	private List<Capitulo> capitulos;
 	
+	// nombre de la temporada
 	private String nombre;
 	
+	// número de temporada dentro de la serie
 	private Integer numero;
 
+	/**
+	 * Constructor sin parámetros
+	 */
 	public Temporada() {
 		super();
 	}
 
-	public Temporada(Capitulo capitulos, String nombre, Integer numero) {
+	/**
+	 * Constructor con parámetros
+	 * @param capitulos
+	 * @param nombre
+	 * @param numero
+	 */
+	public Temporada(List<Capitulo> capitulos, String nombre, Integer numero) {
 		super();
 		this.capitulos = capitulos;
 		this.nombre = nombre;
 		this.numero = numero;
 	}
+	
+	// setters y getters
 
-	public Capitulo getCapitulos() {
+	public List<Capitulo> getCapitulos() {
 		return capitulos;
 	}
 
-	public void setCapitulos(Capitulo capitulos) {
+	public void setCapitulos(List<Capitulo> capitulos) {
 		this.capitulos = capitulos;
 	}
 
@@ -81,5 +97,15 @@ public class Temporada
 		} else if (!numero.equals(other.numero))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Temporada o) {
+		if(o.getNombre().equals(this.getNombre()) &&
+		   o.getCapitulos().equals(this.getCapitulos()) &&
+		   o.getNumero()==this.getNumero()){
+			return 0;
+		}
+		return -1;
 	}
 }

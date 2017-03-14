@@ -1,22 +1,35 @@
 package p1;
 /**
- * @(#) Capitulo.java
+ * Clase que implementa un capítulo
  */
-
-public class Capitulo
+public class Capitulo implements Comparable<Capitulo>
 {
+	// nombre
 	private String nombre;
 	
+	// número dentro de la temporada
 	private Integer numero;
 	
+	// enlace al capítulo
 	private String enlace;
 	
+	// temporada a la que pertenece
 	private Temporada temporada;
 	
+	/**
+	 * Constructor vacío
+	 */
 	public Capitulo() {
 		super();
 	}
 
+	/**
+	 * Constructor con parámetros
+	 * @param nombre
+	 * @param numero
+	 * @param enlace
+	 * @param temporada
+	 */
 	public Capitulo(String nombre, Integer numero, String enlace, Temporada temporada) {
 		super();
 		this.nombre = nombre;
@@ -25,6 +38,8 @@ public class Capitulo
 		this.temporada = temporada;
 	}
 
+	// Setters y getters de los atributos
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -57,6 +72,9 @@ public class Capitulo
 		this.temporada = temporada;
 	}
 
+	/**
+	 * Método hashcode
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,6 +86,9 @@ public class Capitulo
 		return result;
 	}
 
+	/**
+	 * Método equals
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -99,7 +120,23 @@ public class Capitulo
 			return false;
 		return true;
 	}
-	
-	
-	
+
+	/**
+	 * Método compareTo
+	 * @param arg0
+	 * @return 0 si son iguales, 1 si el capitulo pasado
+	 * es anterior a este y -1 en cualquier otro caso
+	 */
+	@Override
+	public int compareTo(Capitulo o) {
+		if(o.getNombre().equals(this.getNombre()) &&
+		   o.getTemporada().equals(this.getTemporada())){
+			if(o.getNumero()==this.getNumero()){
+				return 0;
+			} else if(o.getNumero()<this.getNumero()){
+				return 1;
+			}
+		}
+		return -1;
+	}
 }

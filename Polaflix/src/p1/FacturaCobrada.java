@@ -1,34 +1,46 @@
 package p1;
 import java.sql.Date;
+import java.util.List;
 
 /**
- * @(#) FacturaCobrada.java
+ * Implementa una factura
  */
-
-public class FacturaCobrada
+public class FacturaCobrada implements Comparable<FacturaCobrada>
 {
-	private CapituloVisto capitulosVistos;
+	// capitulos vistos incluidos en la factura 
+	private List<CapituloVisto> capitulosVistos;
 	
+	// fecha de la factura
 	private Date fecha;
 	
+	// precio total
 	private double total;
 	
+	/**
+	 * Constructor sin parámetros
+	 */
 	public FacturaCobrada() {
 		super();
 	}
 
-	public FacturaCobrada(CapituloVisto capitulosVistos, Date fecha, double total) {
+	/**
+	 * Constructor con parámetros
+	 * @param capitulosVistos
+	 * @param fecha
+	 * @param total
+	 */
+	public FacturaCobrada(List<CapituloVisto> capitulosVistos, Date fecha, double total) {
 		super();
 		this.capitulosVistos = capitulosVistos;
 		this.fecha = fecha;
 		this.total = total;
 	}
 
-	public CapituloVisto getCapitulosVistos() {
+	public List<CapituloVisto> getCapitulosVistos() {
 		return capitulosVistos;
 	}
 
-	public void setCapitulosVistos(CapituloVisto capitulosVistos) {
+	public void setCapitulosVistos(List<CapituloVisto> capitulosVistos) {
 		this.capitulosVistos = capitulosVistos;
 	}
 
@@ -82,5 +94,20 @@ public class FacturaCobrada
 		if (Double.doubleToLongBits(total) != Double.doubleToLongBits(other.total))
 			return false;
 		return true;
+	}
+
+	/**
+	 * Retorna 0 si son iguales, 1 si la factura pasada
+	 * es anterior a esta y -1 en cualquier otro caso
+	 */
+	@Override
+	public int compareTo(FacturaCobrada o) {
+		if(o.getFecha().equals(this.fecha) && o.getCapitulosVistos().equals(this.capitulosVistos)){
+			return 0;
+		} else if (o.getFecha().before(this.fecha)){
+			return 1;
+		} else {
+			return -1;
+		}
 	}
 }

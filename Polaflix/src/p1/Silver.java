@@ -1,18 +1,34 @@
 package p1;
-/**
- * @(#) Silver.java
- */
 
+import java.util.List;
+
+/**
+ * Clase que implementa una serie de tipo Silver
+ */
 public class Silver extends Serie
 {
+	// precio del capítulo
 	private double precioCapitulo = 0.75;
 
+	/**
+	 * Constructor sin parámetros
+	 */
 	public Silver() {
 		super();
 	}
 
+	/**
+	 * Constructor con parámetros
+	 * @param temporadas
+	 * @param precioCapitulo
+	 * @param nombre
+	 * @param anhoComienzo
+	 * @param descripcion
+	 * @param creador
+	 * @param actoresPrincipales
+	 */
 	public Silver(Temporada temporadas, double precioCapitulo, String nombre, Integer anhoComienzo, String descripcion,
-			Creador creador, Actor actoresPrincipales) {
+			List<Creador> creador, List<Actor> actoresPrincipales) {
 		super(temporadas, precioCapitulo, nombre, anhoComienzo, descripcion, creador, actoresPrincipales);
 	}
 
@@ -21,6 +37,8 @@ public class Silver extends Serie
 		this.precioCapitulo = precioCapitulo;
 	}
 
+	// getters y setters
+	
 	public double getPrecioCapitulo() {
 		return precioCapitulo;
 	}
@@ -52,6 +70,4 @@ public class Silver extends Serie
 			return false;
 		return true;
 	}
-	
-	
 }

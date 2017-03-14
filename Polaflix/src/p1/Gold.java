@@ -1,19 +1,33 @@
 package p1;
-/**
- * @(#) Gold.java
- */
 
+import java.util.List;
+
+/**
+ * Implementa una serie gold.
+ */
 public class Gold extends Serie
 {
 	private double precioCapitulo = 1.5;
 
-	
+	/**
+	 * Construcor sin parámetros
+	 */
 	public Gold() {
 		super();
 	}
 	
+	/**
+	 * Constructor con parámetros
+	 * @param temporadas
+	 * @param precioCapitulo
+	 * @param nombre
+	 * @param anhoComienzo
+	 * @param descripcion
+	 * @param creador
+	 * @param actoresPrincipales
+	 */
 	public Gold(Temporada temporadas, double precioCapitulo, String nombre, Integer anhoComienzo, String descripcion,
-			Creador creador, Actor actoresPrincipales) {
+			List<Creador> creador, List<Actor> actoresPrincipales) {
 		super(temporadas, precioCapitulo, nombre, anhoComienzo, descripcion, creador, actoresPrincipales);
 	}
 
@@ -21,6 +35,8 @@ public class Gold extends Serie
 		super();
 		this.precioCapitulo = precioCapitulo;
 	}
+	
+	// getters y setters
 
 	public double getPrecioCapitulo() {
 		return precioCapitulo;

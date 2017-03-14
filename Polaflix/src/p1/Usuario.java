@@ -1,28 +1,50 @@
 package p1;
-/**
- * @(#) Usuario.java
- */
 
-public class Usuario
+import java.util.List;
+
+/**
+ * Clase que implementa un usuario de la plataforma Poliflix
+ */
+public class Usuario implements Comparable<Usuario>
 {
+	// espacio personal del usuario
 	private EspacioPersonal espacioPersonal;
 	
-	private FacturaCobrada facturasCobradas;
+	// listado de facturas cobradas
+	private List<FacturaCobrada> facturasCobradas;
 	
+	// nombre de usuario
 	private String nombreUsuario;
 	
+	// cuenta bancaria asociada
 	private String cuentaBancaria;
 	
+	// booleano que indica si tiene una cuota fija (siempre paga
+	// lo mismo sin depender de qué ve) o no (paga en función de
+	// lo que ve)
 	private Boolean cuotaFija = false;
 	
-	private Capitulo capitulosVistos;
+	// listado de capítulos vistos
+	private List<Capitulo> capitulosVistos;
 
+	/**
+	 * Constructor sin parámetros
+	 */
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(EspacioPersonal espacioPersonal, FacturaCobrada facturasCobradas, String nombreUsuario,
-			String cuentaBancaria, Boolean cuotaFija, Capitulo capitulosVistos) {
+	/**
+	 * Getters y setters
+	 * @param espacioPersonal
+	 * @param facturasCobradas
+	 * @param nombreUsuario
+	 * @param cuentaBancaria
+	 * @param cuotaFija
+	 * @param capitulosVistos
+	 */
+	public Usuario(EspacioPersonal espacioPersonal, List<FacturaCobrada> facturasCobradas, String nombreUsuario,
+			String cuentaBancaria, Boolean cuotaFija, List<Capitulo> capitulosVistos) {
 		super();
 		this.espacioPersonal = espacioPersonal;
 		this.facturasCobradas = facturasCobradas;
@@ -32,6 +54,8 @@ public class Usuario
 		this.capitulosVistos = capitulosVistos;
 	}
 
+	// getters y setters
+	
 	public EspacioPersonal getEspacioPersonal() {
 		return espacioPersonal;
 	}
@@ -40,11 +64,11 @@ public class Usuario
 		this.espacioPersonal = espacioPersonal;
 	}
 
-	public FacturaCobrada getFacturasCobradas() {
+	public List<FacturaCobrada> getFacturasCobradas() {
 		return facturasCobradas;
 	}
 
-	public void setFacturasCobradas(FacturaCobrada facturasCobradas) {
+	public void setFacturasCobradas(List<FacturaCobrada> facturasCobradas) {
 		this.facturasCobradas = facturasCobradas;
 	}
 
@@ -72,11 +96,11 @@ public class Usuario
 		this.cuotaFija = cuotaFija;
 	}
 
-	public Capitulo getCapitulosVistos() {
+	public List<Capitulo> getCapitulosVistos() {
 		return capitulosVistos;
 	}
 
-	public void setCapitulosVistos(Capitulo capitulosVistos) {
+	public void setCapitulosVistos(List<Capitulo> capitulosVistos) {
 		this.capitulosVistos = capitulosVistos;
 	}
 
@@ -133,5 +157,10 @@ public class Usuario
 		} else if (!nombreUsuario.equals(other.nombreUsuario))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Usuario o) {
+		return o.getNombreUsuario().compareTo(this.getNombreUsuario());
 	}
 }

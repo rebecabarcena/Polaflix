@@ -1,24 +1,35 @@
 package p1;
 /**
- * @(#) Persona.java
+ * Clase que implementa una persona
  */
-
-public class Persona
+public class Persona implements Comparable<Persona>
 {
+	// nombre
 	private String nombre;
 	
+	// primer apellido
 	private String apellido;
 	
+	/**
+	 * Constructor sin parámetros
+	 */
 	public Persona() {
 		super();
 	}
 
+	/**
+	 * Constructor con parámetros
+	 * @param nombre
+	 * @param apellido
+	 */
 	public Persona(String nombre, String apellido) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 	}
 
+	// getters y setters
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -64,5 +75,13 @@ public class Persona
 		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Persona o) {
+		if(o.getNombre().equals(this.getNombre()) && o.getApellido().equals(this.getApellido())){
+			return 0;
+		}
+		return -1;
 	}
 }

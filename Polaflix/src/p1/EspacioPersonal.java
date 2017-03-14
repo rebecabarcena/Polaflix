@@ -1,48 +1,64 @@
 package p1;
+
+import java.util.List;
+
 /**
- * @(#) EspacioPersonal.java
+ * Implementa el espacio personal de un usuario
  */
-
-public class EspacioPersonal
+public class EspacioPersonal implements Comparable<EspacioPersonal>
 {
-	private Serie seriesPendientes;
+	// lista de series pendientes
+	private List<Serie> seriesPendientes;
 	
-	private Serie seriesFinalizadas;
+	// lista de series finalizadas
+	private List<Serie> seriesFinalizadas;
 	
-	private MarcadorSerie marcadoresSeries;
+	// se usa para marcar el último capítulo visto de cada serie
+	private List<MarcadorSerie> marcadoresSeries;
 
+	/**
+	 * Constructor sin parámetros
+	 */
 	public EspacioPersonal() {
 		super();
 	}
 
-	public EspacioPersonal(Serie seriesPendientes, Serie seriesFinalizadas, MarcadorSerie marcadoresSeries) {
+	/**
+	 * Constructor con parámetros
+	 * @param seriesPendientes
+	 * @param seriesFinalizadas
+	 * @param marcadoresSeries
+	 */
+	public EspacioPersonal(List<Serie> seriesPendientes, List<Serie> seriesFinalizadas, List<MarcadorSerie> marcadoresSeries) {
 		super();
 		this.seriesPendientes = seriesPendientes;
 		this.seriesFinalizadas = seriesFinalizadas;
 		this.marcadoresSeries = marcadoresSeries;
 	}
+	
+	// getters y setters
 
-	public Serie getSeriesPendientes() {
+	public List<Serie> getSeriesPendientes() {
 		return seriesPendientes;
 	}
 
-	public void setSeriesPendientes(Serie seriesPendientes) {
+	public void setSeriesPendientes(List<Serie> seriesPendientes) {
 		this.seriesPendientes = seriesPendientes;
 	}
 
-	public Serie getSeriesFinalizadas() {
+	public List<Serie> getSeriesFinalizadas() {
 		return seriesFinalizadas;
 	}
 
-	public void setSeriesFinalizadas(Serie seriesFinalizadas) {
+	public void setSeriesFinalizadas(List<Serie> seriesFinalizadas) {
 		this.seriesFinalizadas = seriesFinalizadas;
 	}
 
-	public MarcadorSerie getMarcadoresSeries() {
+	public List<MarcadorSerie> getMarcadoresSeries() {
 		return marcadoresSeries;
 	}
 
-	public void setMarcadoresSeries(MarcadorSerie marcadoresSeries) {
+	public void setMarcadoresSeries(List<MarcadorSerie> marcadoresSeries) {
 		this.marcadoresSeries = marcadoresSeries;
 	}
 
@@ -81,6 +97,21 @@ public class EspacioPersonal
 		} else if (!seriesPendientes.equals(other.seriesPendientes))
 			return false;
 		return true;
+	}
+
+	/**
+	 * Retorna un 0 si son iguales y un -1 sino.
+	 * @param o
+	 * @return
+	 */
+	@Override
+	public int compareTo(EspacioPersonal o) {
+		if(this.getMarcadoresSeries().equals(o.getMarcadoresSeries()) &&
+		   this.getSeriesFinalizadas().equals(o.getSeriesFinalizadas()) &&
+		   this.getSeriesPendientes().equals(o.getSeriesPendientes())){
+			return 0;
+		}
+		return -1;
 	}
 	
 	

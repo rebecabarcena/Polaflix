@@ -1,30 +1,52 @@
 package p1;
-/**
- * @(#) Serie.java
- */
 
-public class Serie
+import java.util.List;
+
+/**
+ * Clase que implementa una serie
+ */
+public class Serie implements Comparable<Serie>
 {
+	// temporadas que tiene la serie
 	private Temporada temporadas;
 	
+	// precio que tiene por ver cada capítulo
 	private double precioCapitulo;
 	
+	// nombre de la serie
 	private String nombre;
 	
+	// año en el que comenzó
 	private Integer anhoComienzo;
 	
+	// descripción de la serie
 	private String descripcion;
 	
-	private Creador creador;
+	// creadores de la serie
+	private List<Creador> creador;
 	
-	private Actor actoresPrincipales;
+	// actores principales
+	private List<Actor> actoresPrincipales;
 
+	/**
+	 * Constructor sin parámetros
+	 */
 	public Serie() {
 		super();
 	}
 
+	/**
+	 * Constructor con parámetros
+	 * @param temporadas
+	 * @param precioCapitulo
+	 * @param nombre
+	 * @param anhoComienzo
+	 * @param descripcion
+	 * @param creador
+	 * @param actoresPrincipales
+	 */
 	public Serie(Temporada temporadas, double precioCapitulo, String nombre, Integer anhoComienzo, String descripcion,
-			Creador creador, Actor actoresPrincipales) {
+			List<Creador> creador, List<Actor> actoresPrincipales) {
 		super();
 		this.temporadas = temporadas;
 		this.precioCapitulo = precioCapitulo;
@@ -35,6 +57,8 @@ public class Serie
 		this.actoresPrincipales = actoresPrincipales;
 	}
 
+	// getters y setters
+	
 	public Temporada getTemporadas() {
 		return temporadas;
 	}
@@ -75,19 +99,19 @@ public class Serie
 		this.descripcion = descripcion;
 	}
 
-	public Creador getCreador() {
+	public List<Creador> getCreador() {
 		return creador;
 	}
 
-	public void setCreador(Creador creador) {
+	public void setCreador(List<Creador> creador) {
 		this.creador = creador;
 	}
 
-	public Actor getActoresPrincipales() {
+	public List<Actor> getActoresPrincipales() {
 		return actoresPrincipales;
 	}
 
-	public void setActoresPrincipales(Actor actoresPrincipales) {
+	public void setActoresPrincipales(List<Actor> actoresPrincipales) {
 		this.actoresPrincipales = actoresPrincipales;
 	}
 
@@ -149,6 +173,14 @@ public class Serie
 		} else if (!temporadas.equals(other.temporadas))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Serie o) {
+		if(o.nombre.equals(this.getNombre()) && o.getCreador().equals(this.getCreador())){
+			return 0;
+		}
+		return -1;
 	}
 	
 	

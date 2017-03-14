@@ -2,21 +2,32 @@ package p1;
 import java.sql.Date;
 
 /**
- * @(#) CapituloVisto.java
+ * Clase que implementa un capítulo visto
  */
-
-public class CapituloVisto
+public class CapituloVisto implements Comparable<CapituloVisto>
 {
+	// precio
 	private double precio;
 	
+	// capitulo
 	private Capitulo capitulo;
 	
+	// fecha en la que se vio
 	private Date fecha;
 
+	/**
+	 * Constructor vacío
+	 */
 	public CapituloVisto() {
 		super();
 	}
 
+	/**
+	 * Constructor con parámetros.
+	 * @param precio
+	 * @param capitulo
+	 * @param fecha
+	 */
 	public CapituloVisto(double precio, Capitulo capitulo, Date fecha) {
 		super();
 		this.precio = precio;
@@ -24,6 +35,8 @@ public class CapituloVisto
 		this.fecha = fecha;
 	}
 
+	// getters y setters
+	
 	public double getPrecio() {
 		return precio;
 	}
@@ -82,5 +95,10 @@ public class CapituloVisto
 		if (Double.doubleToLongBits(precio) != Double.doubleToLongBits(other.precio))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(CapituloVisto o) {
+		return o.getCapitulo().compareTo(this.getCapitulo());
 	}	
 }
