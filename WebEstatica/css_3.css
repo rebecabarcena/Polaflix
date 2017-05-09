@@ -1,0 +1,192 @@
+﻿body {
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+
+.logo {
+	width:1cm;
+	float:left;
+}
+
+.fotoPerfil {
+	width:1cm;
+	float:right;
+}
+
+.msj_bienvenida {
+	color:white;
+	font-family:"Comic Sans MS";
+}
+
+.menusup{
+	background-color:red;
+	height: 50px;
+}
+
+.button2{
+	float:left;
+	background:red;
+	color:white;
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border: 1px solid #f21313;
+	
+}
+
+.encabezado {
+	display: block;
+	background-color:black;
+	height: 45px;
+}
+
+#button {
+	padding: 0;
+	display:table-row;
+}
+
+
+#button li {
+	display: inline;
+}
+
+#button li a {
+	font-family: Arial;
+	font-size:11px;
+	text-decoration: none;
+	float:left;
+	padding: 10px;
+	background-color: black;
+	color: #fff;
+}
+
+
+#button li a:hover {
+	background-color:red;
+	margin-top:-2px;
+	padding-bottom:12px;
+}
+
+.alfabeto {
+    list-style-type: none;
+    margin:90px auto 0;
+    padding:0;
+    cursor: pointer;
+    width:80%;
+    text-align:center;
+	list-style-type:none;
+}
+
+.alfabeto li {
+    float:left;
+    margin:0;
+    padding:0;
+    border-right:1px solid darkgrey;
+    font-size: 13px;
+    -moz-box-sizing:border-box;
+    color:black;
+    display:inline-block;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    width:3.84%;
+    min-width:1em;
+    list-style-type: none;
+
+}
+
+.alfabeto li:last-child {
+    border-right: none;
+}
+
+.alfabeto li:hover {
+    color:white;
+    background-color: black;
+}
+
+
+.panel-group{
+	margin-left:15px;
+}
+
+.panel_elem {
+	margin-left: 20px;
+}
+
+#button2 {
+	float: left;
+	background-color:red;
+}
+
+
+/* Some initial styling */
+
+form {
+	width: 200px;
+	height: 40px;
+	margin: 100px auto 0;
+	position: relative;
+}
+
+/* Ok, HTML markup is complete */
+/* submit button will also be the same but with a different color. We'll style the label and the submit input */
+/* a faky 3D look */
+
+#submit {
+	display: none;	
+}
+
+form .icon, form .submit {
+	width: 35px;
+	height: 35px;
+	background: black;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+form .submit {
+	background: #009bff;
+	cursor: pointer;
+}
+
+/* Now, we'll create a search (magnifying glass) icon using pseudo elements */
+form .icon:after, form .submit:after  {
+	content: '';
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	border: 2px solid white;
+	border-radius: 50%;
+	left: 10px;
+	top: 9px;
+}
+
+form .icon:before, form .submit:before {
+	content: '';
+	position: absolute;
+	height: 8px;
+	width: 2px;
+	background: white;
+	transform: rotate(-35deg);
+	top: 19px;
+	left: 21px;
+}
+
+/* Styling the input */
+form #search {
+	-webkit-appearance: none;
+	opacity: 0;
+	border: none;
+	right: 35px;
+	box-shadow:
+		0px 5px #bbb,
+		0px 8px 10px rgba(0, 0, 0, 0.5);
+	margin-top:35px;
+}
+
+.search {	
+	float: right;
+}

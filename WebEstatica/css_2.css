@@ -1,0 +1,100 @@
+﻿body {
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+
+.logo {
+	width:1cm;
+	float:left;
+}
+
+.fotoPerfil {
+	width:1cm;
+	float:right;
+}
+
+.msj_bienvenida {
+	color:white;	
+	font-family:"Comic Sans MS";
+}
+
+.menusup{
+	background-color:red;
+	height: 50px;
+}
+
+.encabezado {
+	display: block;
+	background-color:black;
+	height: 45px;
+}
+
+#button {
+	padding: 0;
+	display:table-row;
+}
+
+
+#button li {
+	display: inline;
+}
+
+#button li a {
+	font-family: Arial;
+	font-size:11px;
+	text-decoration: none;
+	float:left;
+	padding: 10px;
+	background-color: black;
+	color: #fff;
+}
+
+
+#button li a:hover {
+	background-color:red;
+	margin-top:-2px;
+	padding-bottom:12px;
+}
+
+.panel_elem {
+	margin-left: 20px;
+}
+
+#buttonimg {
+	width:1cm;
+	height:1cm;
+	float:left;
+}
+
+#buttonimg2 {
+	width:1cm;
+	height:1cm;
+	float:right;
+}
+
+.panel-body {
+	float:left;
+	margin-left:185px;
+}
+
+#button2 {
+	float: left;
+	background-color:red;
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border: 1px solid #f21313;
+
+}
+
+#tipoSerie {
+	float: right;
+	border-radius: 0px 0px 0px 10px;
+	-moz-border-radius: 0px 0px 0px 10px;
+	-webkit-border-radius: 0px 0px 0px 10px;
+	border: 3px solid #f21313;
+	width:100px;
+	text-align:center;
+	height:20px;
+}
