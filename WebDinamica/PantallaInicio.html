@@ -1,0 +1,24 @@
+	<label id="Label1">Empezadas</label>
+	<div class="textarea">
+    <a href="#!/VerSerie" ng-repeat="x in seriesEmpezadas"
+		ng-controller="verSerieEnlace as cvs" data-ng-click="cvs.serieEnlaceaux(x.serie,x.ultimoCapituloVisto)">
+		    <p>{{x.serie.nombre}}</p>
+    </a>
+  </div>
+
+	<label id="Label1">Pendientes</label>
+	<div class="textarea">
+		<a href="#!/VerSerie" ng-repeat="x in seriesPendientes"
+		ng-controller="verSerieEnlace as cvs" data-ng-click="cvs.serieEnlace(x, 1)">
+      <p>{{x.nombre}}</p>
+    </a>
+	</div>
+
+
+	<label id="Label1">Terminadas</label>
+	<div class="textarea">
+    <a ng-href="#!VerSerie" ng-repeat="x in seriesFinalizadas"
+		ng-controller="verSerieEnlace as cvs" data-ng-click="cvs.serieEnlace(x, x.temporadas.length)">
+      <p>{{x.nombre}}</p>
+    </a>
+	</div>

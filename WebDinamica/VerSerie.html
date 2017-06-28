@@ -1,0 +1,31 @@
+<label id="tipoSerie">{{getTipo()}}</label>
+
+    <br />
+    <br />
+
+    <center><div>
+      <a href="#!/VerSerie" ng-click="flechas(-1)">
+   		   <input type="image" src="arrow.png" name="Anterior temporada" id="buttonimg" />
+      </a>
+      <a href="#!/VerSerie" ng-click="flechas(1)">
+  		    <input type="image" src="arrow2.png" name="Siguiente temporada" id="buttonimg2" />
+      </a>
+      <p>{{getTemporada().nombre}}</p>
+    </div></center>
+
+    <br />
+    <br />
+
+
+    <table class="panel-group2">
+      <tr ng-repeat="x in getTemporada().capitulos">
+        <td class="panel_elem2" >{{x.nombre}}</td>
+        <td>
+          <form method="get" action="#!/Capitulo">
+           <button id="button3" class="button31"><img src="ic_icon_35_512.png" alt="Ver capítulo" width="30px"/></button></td>
+         </form>
+        <td><button id="button3"><img data-ng-src="{{capVisto(x) ? '96x96.png' : 'ic_custom_icon_design_mono_general_4_eye.png'}}" alt="Ver capítulo" width="30px"/></button></td>
+      </tr>
+
+    </table>
+	</div>

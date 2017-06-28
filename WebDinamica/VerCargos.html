@@ -1,0 +1,33 @@
+	<br />
+	<center><div>
+		<a href="#!/VerCargos" ng-click="flechas(-1)">
+   		<input type="image" src="arrow.png" name="Anterior temporada" id="buttonimg" />
+		</a>
+		<a href="#!/VerCargos" ng-click="flechas(1)">
+  		<input type="image" src="arrow2.png" name="Siguiente temporada" id="buttonimg2" />
+		</a>
+    	<p>{{facturaActual.fecha | date: "MMMM y"}}</p>
+    </div></center>
+	<br />
+
+	<center><table class="t">
+	  <tr>
+	    <th id="idColumna">Fecha</th>
+	    <th id="idColumna">Serie</th>
+	    <th id="idColumna">Episodio</th>
+	    <th id="idColumna">Precio</th>
+	  </tr>
+	  <tr ng-repeat="x in facturaActual.capitulosVistos">
+	    <td class="tvalor" id="idColumna">{{x.fecha}}</td>
+	    <td class="tvalor">{{x.capitulo.nombre}}</td>
+	    <td class="tvalor">{{x.temporada}}x{{x.capitulo.numero}}</td>
+	    <td class="tvalor" id="precio">{{x.precio}}</td>
+	  </tr>
+		<tr>
+			<td id="idColumna"></td>
+	    <td></td>
+	    <td></td>
+	    <td class="total" id="resultado">Total: {{ getTotal() }}</td>
+		</tr>
+
+	</table></center>

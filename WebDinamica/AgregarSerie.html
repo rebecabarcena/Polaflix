@@ -1,0 +1,26 @@
+  <ul class="alfabeto">
+		<li ng-repeat="letter in alphabet" ng-click="setLetters(letter)">{{letter}}</li>
+    <li ng-click=setLetters("0-9")>0-9</li>
+	</ul>
+
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<table class="panel-group">
+		<tr ng-repeat-start="x in series | filter : filterData | filter:filterDataText">
+      <td>
+        <button class="button2" ng-if="x.expanded" ng-click="x.expanded = false">-</button>
+        <button class="button2" ng-if="!x.expanded" ng-click="x.expanded = true">+</button>
+      </td>
+			<td class="panel_elem"><a data-ng-click="expand(x)">{{x.nombre}}</a></td>
+			<td><button class="button2">Seguir</button></td>
+			<td><button class="button2" ng-click="submitSeriePendiente(x)">Pendiente</button></td>
+		</tr>
+    <tr ng-if="x.expanded" ng-repeat-end="">
+      <td colspan="2" class="panel_elem">{{x.descripcion}}</td>
+    </tr>
+	</table>
+
+	</div>

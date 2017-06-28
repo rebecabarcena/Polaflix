@@ -1,0 +1,10 @@
+{
+  "name": "Polaflix",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A version of Polaflix",
+  "scripts": {
+    "start": "http-server . -a localhost -p 8000 -c-1"
+  }
+}
+	
