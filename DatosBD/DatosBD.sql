@@ -1,4 +1,8 @@
 use polaflix;
+select * from espacio_personal_marcadores_series;
+select * from espacio_personal_capitulos_vistos;
+select * from espacio_personal_series_pendientes;
+
 insert into serie values ('Gold', 1, 2014, 'Después de que un acelerador de partículas cause una extraña tormenta, al investigador científico de la policía, Barry Allen, le cae un rayo y entra en coma. ...', 'The Flash', 1.50);
 insert into serie values('Gold', 2, 2012, 'Adaptación libre de un personaje de DC Comics, playboy de día, que, durante la noche, usa su arco y sus flechas contra el crimen...', 'Arrow', 1.50);
 insert into serie values('Estandar',3,2005,'Cuando eran niños, Sam y Dean Winchester, perdieron a su madre debido a una misteriosa y demoníaca fuerza sobrenatural...', 'Sobrenatural',0.50);
@@ -87,15 +91,17 @@ insert into usuario values('marta','1212',true,'2');
 insert into espacio_personal values(3);
 insert into usuario values('juan','1212',true,'3');
 
-insert into marcador_serie values(1,1,1);
-insert into marcador_serie values(2,2,3);
+insert into marcador_serie values(1,1,1,1,1);
+insert into marcador_serie values(2,2,3,2,2);
 insert into marcador_serie values(3,3,5);
+insert into marcador_serie values(4,3,5,3,5);
 
 insert into espacio_personal_marcadores_series values(1,1,1);
 insert into espacio_personal_marcadores_series values(2,2,2);
 insert into espacio_personal_marcadores_series values(3,3,3);
 
 insert into espacio_personal_series_finalizadas values(1,2);
+insert into espacio_personal_series_finalizadas values(1,4);
 insert into espacio_personal_series_finalizadas values(2,3);
 insert into espacio_personal_series_finalizadas values(3,4);
 
@@ -110,15 +116,23 @@ insert into espacio_personal_capitulos_vistos values (3,3);
 insert into capitulo_visto values (1,"2016-09-09",1.5,1);
 insert into capitulo_visto values (2,"2017-12-12",1.5,2);
 insert into capitulo_visto values (3,"2017-01-01",0.5,3);
+insert into capitulo_visto values (4,"2017-01-01",0.5,3);
+insert into capitulo_visto values (5,"2017-01-01",0.5,3);
 
 insert into factura_cobrada values(1,"2016-10-1");
 insert into factura_cobrada values(2,"2017-1-1");
 insert into factura_cobrada values(3,"2017-2-1");
+insert into facturseriea_cobrada values(4,"2017-3-1");
 
 insert into factura_cobrada_capitulos_vistos values(1,1);
+insert into factura_cobrada_capitulos_vistos values(1,2);
+insert into factura_cobrada_capitulos_vistos values(1,3);
 insert into factura_cobrada_capitulos_vistos values(2,2);
 insert into factura_cobrada_capitulos_vistos values(3,3);
+insert into factura_cobrada_capitulos_vistos values(4,4);
+insert into factura_cobrada_capitulos_vistos values(4,5);
 
 insert into usuario_facturas_cobradas values('pepito',1);
+insert into usuario_facturas_cobradas values('pepito',4);
 insert into usuario_facturas_cobradas values('marta',2);
 insert into usuario_facturas_cobradas values('juan',3);
