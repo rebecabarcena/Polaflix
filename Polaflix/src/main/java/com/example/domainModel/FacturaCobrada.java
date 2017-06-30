@@ -1,6 +1,7 @@
 package com.example.domainModel;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -123,5 +124,11 @@ public class FacturaCobrada implements Comparable<FacturaCobrada>, Serializable
 		} else {
 			return -1;
 		}
+	}
+	
+	public int getMes(){
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(fecha);
+		return cal.get(Calendar.MONTH);
 	}
 }

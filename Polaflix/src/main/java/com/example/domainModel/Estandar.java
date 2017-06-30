@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Implementa una serie de tipo est�ndar
  */
@@ -47,6 +49,11 @@ public class Estandar extends Serie implements Serializable
 	}
 
 	// getters y setters
+	@JsonProperty("tipo")
+	public String getNombreTemporada(){
+		return "Estandar";
+	}
+	
 	public double getPrecioCapitulo() {
 		return precioCapitulo;
 	}

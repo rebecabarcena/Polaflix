@@ -148,5 +148,24 @@ public class EspacioPersonal implements Comparable<EspacioPersonal>, Serializabl
 		return -1;
 	}
 	
+	public MarcadorSerie getMarcadorBySerieName(String nombre){
+		for(MarcadorSerie m: marcadoresSeries){
+			if(m.getSerie().getNombre().equals(nombre)){
+				return m;
+			}
+		}
+		return null;
+	}
 	
+	public boolean anhadeSeriePendiente(Serie s){
+		return seriesPendientes.add(s);
+	}
+	
+	public boolean anhadeMarcadorSerie(MarcadorSerie ms){
+		return marcadoresSeries.add(ms);
+	}
+	
+	public boolean anhadeCapitulo(Capitulo c){
+		return capitulosVistos.add(c);
+	}
 }

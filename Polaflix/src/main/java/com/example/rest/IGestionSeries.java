@@ -8,8 +8,7 @@ import com.example.domainModel.Temporada;
 
 public interface IGestionSeries {
 
-	public Serie getSerieByNombre(String nombre);
-	public List<Serie> getSeriesByLetter(char letra);
-	public List<Temporada> getTemporadasSerie(long id);
-	public List<Capitulo> getCapituloTemporada(long id);
+	public List<Temporada> getTemporadasSerie(Long id);
+	public List<Capitulo> getCapituloTemporada(Long id);
+	public List<Serie> getSeries();
 }

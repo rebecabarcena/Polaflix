@@ -8,19 +8,18 @@ import com.example.domainModel.EspacioPersonal;
 import com.example.domainModel.FacturaCobrada;
 import com.example.domainModel.MarcadorSerie;
 import com.example.domainModel.Serie;
+import com.example.domainModel.Usuario;
 
  interface IGestionUsuario {
 	
 	List<MarcadorSerie> getSeriesEmpezadas(Long id);
-	void anhadeSeriesEmpezadas(Long id, List<MarcadorSerie> series);
+	Usuario anhadeSeriesEmpezadas(String nombre, Long id, String serie);
 	List<Serie> getSeriesPendientes(Long id);
-	void anhadeSeriesPendientes(Long id, List<Serie> series);
+	Usuario anhadeSeriesPendientes(String nombre, Long id, String series);
 	List<Serie> getSeriesFinalizadas(Long id);
-	void anhadeSeriesFinalizadas(Long id, List<Serie> series);
 	List<FacturaCobrada> getFacturas(String nombre);
-	FacturaCobrada getFactura(String nombre, Date fecha);
+	List<Capitulo> getCapitulosVistos(Long id);
 	EspacioPersonal getEspacioPersonal(String nombre);
-	List<CapituloVisto> getCapitulosFactura(String nombre, Date fecha);
-	void anhadeCapitulosFactura(Long id, List<CapituloVisto> capitulos);	
-	void anhadeCapitulos(Long id, List<Capitulo> c);	
+	Usuario verCapitulo(String nombre, String c);	
+	Usuario capituloVisto(String nombre, Long id, String c);	
 }

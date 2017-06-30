@@ -1,6 +1,7 @@
 package com.example.domainModel;
 
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +28,7 @@ public class Capitulo implements Comparable<Capitulo>, Serializable
 	private String enlace;
 	
 	@OneToOne
+	@JsonIgnore
 	// temporada a la que pertenece
 	private Temporada temporada;
 	
@@ -54,6 +56,11 @@ public class Capitulo implements Comparable<Capitulo>, Serializable
 
 	// Setters y getters de los atributos
 	
+	@JsonProperty("id")
+	public Long getID(){
+		return id;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -77,7 +84,7 @@ public class Capitulo implements Comparable<Capitulo>, Serializable
 	public void setEnlace(String enlace) {
 		this.enlace = enlace;
 	}
-
+	
 	public Temporada getTemporada() {
 		return temporada;
 	}

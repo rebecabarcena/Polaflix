@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Clase que implementa un cap�tulo visto
  */
@@ -48,7 +50,20 @@ public class CapituloVisto implements Comparable<CapituloVisto>, Serializable
 	}
 
 	// getters y setters
+
+	@JsonProperty("temporada")
+	public String getNombreTemporada(){
+		if(capitulo.getTemporada()==null){
+			return "";
+		}
+		return capitulo.getTemporada().getNumero().toString();
+	}
 	
+	@JsonProperty("serie")
+	public String getNombreSerie(){
+		return capitulo.getTemporada().getSerie().getNombre();
+	}
+		
 	public double getPrecio() {
 		return precio;
 	}

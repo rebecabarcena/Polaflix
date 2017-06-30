@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Implementa una serie gold.
  */
@@ -48,7 +50,11 @@ public class Gold extends Serie implements Serializable
 	}
 	
 	// getters y setters
-
+	@JsonProperty("tipo")
+	public String getNombreTemporada(){
+		return "Gold";
+	}
+	
 	public double getPrecioCapitulo() {
 		return precioCapitulo;
 	}

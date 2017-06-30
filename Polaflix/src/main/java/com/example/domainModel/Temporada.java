@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Clase que implementa la temporada de una serie
@@ -28,6 +31,10 @@ public class Temporada implements Comparable<Temporada>, Serializable
 	
 	// n�mero de temporada dentro de la serie
 	private Integer numero;
+	
+	@JsonIgnore
+	@OneToOne
+	private Serie serie;
 
 	/**
 	 * Constructor sin par�metros
@@ -42,14 +49,23 @@ public class Temporada implements Comparable<Temporada>, Serializable
 	 * @param nombre
 	 * @param numero
 	 */
-	public Temporada(List<Capitulo> capitulos, String nombre, Integer numero) {
+	public Temporada(List<Capitulo> capitulos, String nombre, Integer numero, Serie serie) {
 		super();
 		this.capitulos = capitulos;
 		this.nombre = nombre;
 		this.numero = numero;
+		this.serie = serie;
 	}
 	
 	// setters y getters
+	
+	public Serie getSerie(){
+		return serie;
+	}
+	
+	public void setSerie(Serie serie){
+		this.serie = serie;
+	}
 
 	public List<Capitulo> getCapitulos() {
 		return capitulos;

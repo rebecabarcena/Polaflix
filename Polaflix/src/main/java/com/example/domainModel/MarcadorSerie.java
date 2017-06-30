@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * Implementa un marcador de una serie, indicando el �ltimo cap�tulo visto
@@ -17,9 +18,11 @@ public class MarcadorSerie implements Comparable<MarcadorSerie>, Serializable
     private Long id;
 	
 	// serie
+	@OneToOne
 	private Serie serie;
 	
 	// �ltimo cap�tulo visto
+	@OneToOne
 	private Capitulo ultimoCapituloVisto;
 
 	/**
@@ -93,4 +96,5 @@ public class MarcadorSerie implements Comparable<MarcadorSerie>, Serializable
 	public int compareTo(MarcadorSerie o) {
 		return o.getSerie().compareTo(this.getSerie());
 	}
+	
 }

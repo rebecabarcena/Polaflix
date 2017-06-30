@@ -156,4 +156,35 @@ public class Usuario implements Comparable<Usuario>, Serializable
 	public int compareTo(Usuario o) {
 		return o.getNombreUsuario().compareTo(this.getNombreUsuario());
 	}
+	
+	public boolean anhadeSeriePen(Serie s){
+		if(espacioPersonal.getSeriesPendientes().contains(s)){
+			return false;
+		}
+		espacioPersonal.anhadeSeriePendiente(s);
+		return true;
+	}
+	
+	public boolean anhadeSerieEmp(MarcadorSerie ms){
+		if(espacioPersonal.getMarcadoresSeries().contains(ms)){
+			return false;
+		}
+		espacioPersonal.anhadeMarcadorSerie(ms);
+		return true;
+	}
+	
+	public boolean capituloVisto(Capitulo c){
+		if(espacioPersonal.getMarcadorBySerieName(c.getTemporada().getSerie().getNombre())==null){
+			return false;
+		}
+		espacioPersonal.anhadeCapitulo(c);
+		return true;
+	}
+	
+	public boolean anhadeCap(Capitulo c){
+		if(!espacioPersonal.getCapitulosVistos().contains(c)){
+			return espacioPersonal.anhadeCapitulo(c);
+		}
+		return false;
+	}
 }

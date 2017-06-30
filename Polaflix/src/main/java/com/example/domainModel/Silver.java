@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Clase que implementa una serie de tipo Silver
  */
@@ -48,7 +50,10 @@ public class Silver extends Serie implements Serializable
 	}
 
 	// getters y setters
-	
+	@JsonProperty("tipo")
+	public String getNombreTemporada(){
+		return "Silver";
+	}
 	public double getPrecioCapitulo() {
 		return precioCapitulo;
 	}

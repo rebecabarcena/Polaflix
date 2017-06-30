@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.example.domainModel.Capitulo;
+import com.example.domainModel.EspacioPersonal;
 import com.example.domainModel.FacturaCobrada;
 import com.example.domainModel.Serie;
 import com.example.domainModel.Temporada;
@@ -36,8 +37,7 @@ private static final Logger log = LoggerFactory.getLogger(RepositorioUsuarioTest
 	@Bean
 	public CommandLineRunner demoTest(UsuarioRepository repository) {
 		return (args) -> {
-			List<Capitulo> u1 = repository.findVisualizacionesByFacturaCobrada((long) 1);
-			List<FacturaCobrada> fs = repository.findFacturasCobradas("pepito");
+			Object a = repository.findEspacioPersonalByUser("pepe");
 			
 		};
 	}
