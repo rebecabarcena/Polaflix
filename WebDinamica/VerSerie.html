@@ -22,9 +22,9 @@
         <td class="panel_elem2" >{{x.nombre}}</td>
         <td>
           <form method="get" action="#!/Capitulo">
-           <button id="button3" class="button31"><img src="ic_icon_35_512.png" alt="Ver capítulo" width="30px"/></button></td>
+           <button id="button3" ng-click="verCapitulo(x.id)"><img src="ic_icon_35_512.png" alt="Ver capítulo" width="30px"/></button></td>
          </form>
-        <td><button id="button3"><img data-ng-src="{{capVisto(x) ? '96x96.png' : 'ic_custom_icon_design_mono_general_4_eye.png'}}" alt="Ver capítulo" width="30px"/></button></td>
+        <td><button id="button3" ng-click="capituloVisto(x.id)"><img data-ng-src="{{capVisto(x) ? '96x96.png' : 'ic_custom_icon_design_mono_general_4_eye.png'}}" alt="Ver capítulo" width="30px"/></button></td>
       </tr>
 
     </table>

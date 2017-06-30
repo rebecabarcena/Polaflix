@@ -15,8 +15,8 @@
         <button class="button2" ng-if="!x.expanded" ng-click="x.expanded = true">+</button>
       </td>
 			<td class="panel_elem"><a data-ng-click="expand(x)">{{x.nombre}}</a></td>
-			<td><button class="button2">Seguir</button></td>
-			<td><button class="button2" ng-click="submitSeriePendiente(x)">Pendiente</button></td>
+			<td><button class="button2" ng-click="submitSerieSeguir(x.nombre)">Seguir</button></td>
+			<td><button class="button2" ng-click="submitSeriePendiente(x.nombre)">Pendiente</button></td>
 		</tr>
     <tr ng-if="x.expanded" ng-repeat-end="">
       <td colspan="2" class="panel_elem">{{x.descripcion}}</td>

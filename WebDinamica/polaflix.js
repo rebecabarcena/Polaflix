@@ -125,7 +125,6 @@ app.controller("factura", function($scope, $http, serviceC) {
       contentType: 'application/json'
   }).then(function successCallback(response){
     $scope.facturas=response.data;
-    console.log($scope.facturas);
     $scope.idActual=$scope.facturas.length-1;
     $scope.facturaActual=$scope.facturas[$scope.idActual];
   },function errorCallback(response){
@@ -203,6 +202,28 @@ app.controller("rellenarVerSerie", function($scope, $http, service, serviceC) {
       $scope.temporadaElegida=parseInt($scope.temporadaElegida)+parseInt(valor);
     }
   }
+
+  $scope.verCapitulo = function(capitulo){
+    $http({
+      method : "POST",
+      url : 'http://localhost:8080/Usuario/'+usuario+'/verCapitulo/'+capitulo
+     }).then(function successCallback(response){
+       console.log("Acierto"+response);
+     },function errorCallback(response){
+       console.log("ERROR"+response);
+     })
+  }
+
+  $scope.capituloVisto = function(capitulo){
+    $http({
+      method : 'POST',
+      url : 'http://localhost:8080/Usuario/'+usuario+'/EspacioPersonal/1/nuevoCapituloVisto/'+capitulo,
+     }).then(function successCallback(response){
+       console.log("Acierto"+response);
+     },function errorCallback(response){
+       console.log("ERROR"+response);
+     })
+  }
 });
 
 
@@ -255,12 +276,19 @@ serviceC.view = "AS";
 
    $scope.submitSeriePendiente = function(serie){
      $http({
-       method : "POST",
-       url : 'http://localhost:8080/Usuario/'+usuario+'/EspacioPersonal/1/SeriesPendientes',
-       data : angular.toJson(serie),
-       headers : {
-         'Content-Type' : 'application/json'
-       }
+       method : 'POST',
+       url : 'http://localhost:8080/Usuario/'+usuario+'/EspacioPersonal/1/anhadeSeriePend/'+serie,
+      }).then(function successCallback(response){
+        console.log("Acierto"+response);
+      },function errorCallback(response){
+        console.log("ERROR"+response);
+      })
+   }
+
+   $scope.submitSerieSeguir = function(serie){
+     $http({
+       method : 'POST',
+       url : 'http://localhost:8080/Usuario/'+usuario+'/EspacioPersonal/1/anhadeSerieEmp/'+serie,
       }).then(function successCallback(response){
         console.log("Acierto"+response);
       },function errorCallback(response){
