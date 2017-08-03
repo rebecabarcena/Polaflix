@@ -19,7 +19,7 @@ public class Usuario implements Comparable<Usuario>, Serializable
 	// espacio personal del usuario
 	private EspacioPersonal espacioPersonal;
 	
-	@OneToMany(cascade = CascadeType.REMOVE)
+	@OneToMany(cascade = CascadeType.ALL)
 	// listado de facturas cobradas
 	private List<FacturaCobrada> facturasCobradas;
 	
@@ -162,6 +162,9 @@ public class Usuario implements Comparable<Usuario>, Serializable
 			return false;
 		}
 		espacioPersonal.anhadeSeriePendiente(s);
+		MarcadorSerie ms = new MarcadorSerie(s,s.getTemporadas().get(1).getCapitulos().get(1), nombreUsuario);
+		espacioPersonal.eliminaSerieEmpezada(ms);
+		espacioPersonal.eliminaSerieFinalizada(s);
 		return true;
 	}
 	
@@ -170,21 +173,26 @@ public class Usuario implements Comparable<Usuario>, Serializable
 			return false;
 		}
 		espacioPersonal.anhadeMarcadorSerie(ms);
+		espacioPersonal.eliminaSerieFinalizada(ms.getSerie());
+		espacioPersonal.eliminaSeriePendiente(ms.getSerie());
 		return true;
 	}
 	
 	public boolean capituloVisto(Capitulo c){
-		if(espacioPersonal.getMarcadorBySerieName(c.getTemporada().getSerie().getNombre())==null){
-			return false;
-		}
-		espacioPersonal.anhadeCapitulo(c);
-		return true;
-	}
-	
-	public boolean anhadeCap(Capitulo c){
 		if(!espacioPersonal.getCapitulosVistos().contains(c)){
 			return espacioPersonal.anhadeCapitulo(c);
 		}
-		return false;
+		return false;	}
+	
+	public void anhadeCap(Capitulo c){
+		espacioPersonal.anhadeCapitulo(c);
+	}
+	
+	public void anhadeCapAFactura(int index, CapituloVisto c){
+		facturasCobradas.get(index).anhaceCap(c);
+	}
+	
+	public void anhadeFactura(FacturaCobrada f){
+		facturasCobradas.add(f);
 	}
 }

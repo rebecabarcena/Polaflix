@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class FacturaCobrada implements Comparable<FacturaCobrada>, Serializable
 	@GeneratedValue 
     private Long id;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	// capitulos vistos incluidos en la factura 
 	private List<CapituloVisto> capitulosVistos;
 	
@@ -30,6 +31,8 @@ public class FacturaCobrada implements Comparable<FacturaCobrada>, Serializable
 	@Transient
 	// precio total
 	private double total;
+	
+	private String nombreUsuario;
 	
 	/**
 	 * Constructor sin par�metros
@@ -44,11 +47,12 @@ public class FacturaCobrada implements Comparable<FacturaCobrada>, Serializable
 	 * @param fecha
 	 * @param total
 	 */
-	public FacturaCobrada(List<CapituloVisto> capitulosVistos, Date fecha, double total) {
+	public FacturaCobrada(List<CapituloVisto> capitulosVistos, Date fecha, double total, String nombreUsuario) {
 		super();
 		this.capitulosVistos = capitulosVistos;
 		this.fecha = fecha;
 		this.total = total;
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public List<CapituloVisto> getCapitulosVistos() {
@@ -73,6 +77,14 @@ public class FacturaCobrada implements Comparable<FacturaCobrada>, Serializable
 
 	public void setTotal(double total) {
 		this.total = total;
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	@Override
@@ -130,5 +142,9 @@ public class FacturaCobrada implements Comparable<FacturaCobrada>, Serializable
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(fecha);
 		return cal.get(Calendar.MONTH);
+	}
+	
+	public void anhaceCap(CapituloVisto c){
+		capitulosVistos.add(c);
 	}
 }

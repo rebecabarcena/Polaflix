@@ -51,12 +51,12 @@ public class GestionUsuario implements IGestionUsuario {
 		Usuario user = rep.findByNombreUsuario(nombre);
 		Serie s = srep.findByNombre(serie);
 		if(!user.getEspacioPersonal().getMarcadoresSeries().contains(s)){
-			MarcadorSerie ms = new MarcadorSerie(s,s.getTemporadas().get(1).getCapitulos().get(1));
+			MarcadorSerie ms = new MarcadorSerie(s,s.getTemporadas().get(1).getCapitulos().get(1), nombre);
 			rep.save(ms);
 			boolean anhade = user.anhadeSerieEmp(ms);
-			if(anhade){
+			//if(anhade){
 				return rep.save(user);
-			}
+			//}
 		}
 		return null;
 	}
@@ -114,14 +114,13 @@ public class GestionUsuario implements IGestionUsuario {
 		
 		if(u.getFacturasCobradas().get(u.getFacturasCobradas().size()-1).getMes()==
 				cal.get(Calendar.MONTH)){
-			u.getFacturasCobradas().get(u.getFacturasCobradas().size()-1).
-				getCapitulosVistos().add(new CapituloVisto(cap.getTemporada().getSerie().getPrecioCapitulo(),cap,date2));
+			u.anhadeCapAFactura(u.getFacturasCobradas().size()-1, new CapituloVisto(cap.getTemporada().getSerie().getPrecioCapitulo(),cap,date2));
 		} else {
 			// Si no existe factura, se crea una nueva
 			List<CapituloVisto> caps = new ArrayList<CapituloVisto>();
 			caps.add(new CapituloVisto(cap.getTemporada().getSerie().getPrecioCapitulo(),cap,date2));
-			FacturaCobrada f = new FacturaCobrada(caps,(java.sql.Date) date2,0);
-			u.getFacturasCobradas().add(f);
+			FacturaCobrada f = new FacturaCobrada(caps,(java.sql.Date) date2,0,nombre);
+			u.anhadeFactura(f);
 			rep.save(f);
 		}
 		return rep.save(u);

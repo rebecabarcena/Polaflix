@@ -2,6 +2,7 @@ package com.example.domainModel;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,6 +25,8 @@ public class MarcadorSerie implements Comparable<MarcadorSerie>, Serializable
 	// �ltimo cap�tulo visto
 	@OneToOne
 	private Capitulo ultimoCapituloVisto;
+	
+	private String nombreUsuario;
 
 	/**
 	 * Constructor sin par�metros
@@ -37,10 +40,11 @@ public class MarcadorSerie implements Comparable<MarcadorSerie>, Serializable
 	 * @param series
 	 * @param ultimoCapituloVisto
 	 */
-	public MarcadorSerie(Serie series, Capitulo ultimoCapituloVisto) {
+	public MarcadorSerie(Serie series, Capitulo ultimoCapituloVisto, String nombreUsuario) {
 		super();
 		this.serie = series;
 		this.ultimoCapituloVisto = ultimoCapituloVisto;
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	// getters y setters
@@ -59,6 +63,14 @@ public class MarcadorSerie implements Comparable<MarcadorSerie>, Serializable
 
 	public void setUltimoCapituloVisto(Capitulo ultimoCapituloVisto) {
 		this.ultimoCapituloVisto = ultimoCapituloVisto;
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	@Override

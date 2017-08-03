@@ -3,6 +3,7 @@ package com.example.domainModel;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class EspacioPersonal implements Comparable<EspacioPersonal>, Serializabl
 	// lista de series finalizadas
 	private List<Serie> seriesFinalizadas;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	// se usa para marcar el �ltimo cap�tulo visto de cada serie
 	private List<MarcadorSerie> marcadoresSeries;
 
@@ -167,5 +168,17 @@ public class EspacioPersonal implements Comparable<EspacioPersonal>, Serializabl
 	
 	public boolean anhadeCapitulo(Capitulo c){
 		return capitulosVistos.add(c);
+	}
+	
+	public void eliminaSerieEmpezada(MarcadorSerie ms){
+		marcadoresSeries.remove(ms);
+	}
+	
+	public void eliminaSeriePendiente(Serie s){
+		seriesPendientes.remove(s);
+	}
+	
+	public void eliminaSerieFinalizada(Serie s){
+		seriesFinalizadas.remove(s);
 	}
 }
